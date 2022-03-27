@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main_screen/main_screen.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Мои деньги'),
           ),
-          body: const Text('временный текст')//const MainScreenWidget(),
+          body: const MainScreenWidget(),
         ),
       ),
     );
