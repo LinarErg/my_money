@@ -2,14 +2,17 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
-  const BottomNavigationBarWidget({
+  BottomNavigationBarWidget({
     Key? key,
+    required this.currentIndex
   }) : super(key: key);
+
+  int currentIndex;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: 0,
+      currentIndex: currentIndex,
       items: const [
         BottomNavigationBarItem(
           label: 'Главный',
@@ -17,14 +20,14 @@ class BottomNavigationBarWidget extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           label: 'Настройки',
-          icon: Icon(Icons.settings_accessibility),
+          icon: Icon(Icons.settings),
         ),
       ],
       onTap: (int index) {
         if (index == 0) {
-          Navigator.pushNamed(context, '/');
+          Navigator.pushReplacementNamed(context, '/mainScreen');
         } else if (index == 1) {
-          Navigator.pushNamed(context, '/mainSettings');
+          Navigator.pushReplacementNamed(context, '/mainSettings');
          }
       },
     );

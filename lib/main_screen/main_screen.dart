@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../bottom_navigation_bar.dart';
 
 class MainScreenWidget extends StatelessWidget {
-  const MainScreenWidget({Key? key}) : super(key: key);
+  const MainScreenWidget({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MainScreenWidget extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Мои деньги'),
         ),
-        bottomNavigationBar: const BottomNavigationBarWidget(),
+        bottomNavigationBar: BottomNavigationBarWidget(currentIndex: 0,),
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(

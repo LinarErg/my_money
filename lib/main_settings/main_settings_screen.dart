@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../bottom_navigation_bar.dart';
+
 class MainSettingWidget extends StatefulWidget {
   const MainSettingWidget({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
           title: const Text('Настройки'),
         ),
         body: Container(),
+        bottomNavigationBar: BottomNavigationBarWidget(currentIndex: 1,),
       ),
     );
   }
