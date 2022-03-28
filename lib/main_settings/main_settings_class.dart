@@ -1,7 +1,7 @@
 class MainSettings {
-  final String dataAcquisitionPath;
-  final String loginAuthorization;
-  final String passwordAuthorization;
+  String dataAcquisitionPath;
+  String loginAuthorization;
+  String passwordAuthorization;
 
   MainSettings(
       {required this.dataAcquisitionPath,

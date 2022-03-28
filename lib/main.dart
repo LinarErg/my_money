@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/main_settings/main_settings_screen.dart';
 
 import 'main_screen/main_screen.dart';
 
@@ -17,14 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Мои деньги'),
-          ),
-          body: const MainScreenWidget(),
-        ),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainScreenWidget(),
+        '/mainSettings': (context) => const MainSettingWidget(),
+      },
+
     );
   }
 }

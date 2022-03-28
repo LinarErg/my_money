@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
 
+import '../bottom_navigation_bar.dart';
+
 class MainScreenWidget extends StatelessWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Column(
-        children: [
-          Row(
-            children: const [DateTimeGetWidget()],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Мои деньги'),
+        ),
+        bottomNavigationBar: const BottomNavigationBarWidget(),
+        body: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Column(
+            children: [
+              Row(
+                children: const [DateTimeGetWidget()],
+              ),
+              Row(
+                children: const [DifferenceInIncomeExpensesWidget()],
+              ),
+              Row(
+                children: const [IncomeInfoWidget(), SpentInfoWidget()],
+              ),
+            ],
           ),
-          Row(
-            children: const [DifferenceInIncomeExpensesWidget()],
-          ),
-          Row(
-            children: const [IncomeInfoWidget(), SpentInfoWidget()],
-          ),
-        ],
+        ),
       ),
     );
   }
 }
+
+
 
 class SpentInfoWidget extends StatelessWidget {
   const SpentInfoWidget({
