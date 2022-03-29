@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_money/main_settings/main_settings_model.dart';
 
 import '../bottom_navigation_bar.dart';
 
@@ -10,6 +11,14 @@ class MainSettingWidget extends StatefulWidget {
 }
 
 class _MainSettingWidgetState extends State<MainSettingWidget> {
+  TextEditingController textEditControllerLogin = TextEditingController();
+  TextEditingController textEditControllerPassword = TextEditingController();
+  TextEditingController textEditControllerPath = TextEditingController();
+  final textFieldDecoration = const InputDecoration(
+    border: OutlineInputBorder(),
+    contentPadding: EdgeInsets.symmetric(horizontal: 5),
+  );
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,7 +31,6 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
           child: Column(
             children: const [
               AuthorizationSettingWidget(),
-              SaveSettingButtonWidget(),
             ],
           ),
         ),
@@ -31,17 +39,6 @@ class _MainSettingWidgetState extends State<MainSettingWidget> {
         ),
       ),
     );
-  }
-}
-
-class SaveSettingButtonWidget extends StatelessWidget {
-  const SaveSettingButtonWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column();
   }
 }
 
@@ -98,6 +95,26 @@ class _AuthorizationSettingWidgetState
           decoration: textFieldDecoration,
           textAlign: TextAlign.center,
           readOnly: false,
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blue),
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25))),
+          ),
+          onPressed: () {
+            final map = {
+              'mainSettingLogin': textEditControllerLogin.text,
+              'mainSettingPassword': textEditControllerPassword.text,
+              'mainSettingPath': textEditControllerPath.text,
+            };
+            saveSettingsApp(map);
+          },
+          child: const Text(
+            'Войти',
+            style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
+          ),
         ),
       ],
     );

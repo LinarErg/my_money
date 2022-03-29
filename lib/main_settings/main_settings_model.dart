@@ -1,17 +1,20 @@
 
-class MainSettingsModel {
+import 'package:shared_preferences/shared_preferences.dart';
 
-  final String dataAcquisitionPath;
-  final String loginAuthorization;
-  final String passwordAuthorization;
+Future<void> saveSettingsApp(Map<String, String> map) async {
 
-  MainSettingsModel(
-      {required this.dataAcquisitionPath, required this.loginAuthorization, required this.passwordAuthorization});
+  final preference = await SharedPreferences.getInstance();
+  for(var item in map.entries){
+    preference.setString(item.key, item.value);
+  }
+}
 
-// final dataAcquisitionPath = 'http://127.0.0.1/earnings/hs/mobileClient/V1/CurrentMoneyData';
-// final loginAuthorization = 'Линар';
-// final passwordAuthorization = '';
-//MainSettings mainSettings =
-// MainSettings(dataAcquisitionPath: dataAcquisitionPath, loginAuthorization: loginAuthorization, passwordAuthorization: passwordAuthorization);
+Future<Map> loadSettingsApp(List<String> list) async {
+  final preference = await SharedPreferences.getInstance();
 
+  var map = {};
+  for (var listItem in list) {
+    map[listItem] = preference.getString(listItem) ?? '';
+  }
+  return map;
 }
